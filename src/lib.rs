@@ -11,7 +11,7 @@
 //! use wayland_client::{Connection, QueueHandle};
 //!
 //! // Create a Wayland connection and a queue.
-//! let connection = Connection::connect_to_env().unwrap();
+//! let connection = Connection::connect_to_env_threadsafe().unwrap();
 //! let event_queue = connection.new_event_queue();
 //! let queue_handle = event_queue.handle();
 //!
@@ -37,7 +37,7 @@ use calloop::{
     RegistrationToken, Token, TokenFactory,
 };
 use rustix::io::Errno;
-use wayland_backend::client::{ReadEventsGuard, WaylandError};
+use wayland_client::backend::{ReadEventsGuard, WaylandError};
 use wayland_client::{Connection, DispatchError, EventQueue};
 
 #[cfg(feature = "log")]
